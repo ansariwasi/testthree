@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Only For You</title>
+    <link type="text/css" rel="stylesheet" href="./file/default.css">
+    <script type="text/javascript" src="./file/jquery.min.js"></script>
+    <script type="text/javascript" src="./file/jscex.min.js"></script>
+    <script type="text/javascript" src="./file/jscex-parser.js"></script>
+    <script type="text/javascript" src="./file/jscex-jit.js"></script>
+    <script type="text/javascript" src="./file/jscex-builderbase.min.js"></script>
+    <script type="text/javascript" src="./file/jscex-async.min.js"></script>
+    <script type="text/javascript" src="./file/jscex-async-powerpack.min.js"></script>
+    <script type="text/javascript" src="./file/functions.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./file/love.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style type="text/css">
+    </style>
+
+    <style>
+
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        .rotateImages {
+            animation: myRotate 10s linear infinite;
+        }
+
+        @keyframes myRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .music-icon {
+            position: fixed;
+            z-index: 10001;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffc400 0%, #f2b9aa 100%);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .music-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+            transition: fill 0.2s;
+        }
+
+        .music-icon:hover svg {
+            fill: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="music-icon" onclick="toggleMusic()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 3v10.55a3.94 3.94 0 00-2-.55 4 4 0 104 4V7h4V3h-6z" />
+            </svg>
+        </div>
+
+        <audio class="song-audio-autoplay" controls loop style="display: none; visibility: hidden;" autoplay muted>
+            <source src="./musicc.mp3" type="audio/mp3">
+          </audio>
+          
+          <script>
+            // Unmute the audio once the page loads
+            window.addEventListener('load', function() {
+              var audioElement = document.querySelector(".song-audio-autoplay");
+              audioElement.muted = false;  // Unmute the audio
+              audioElement.volume = 0.6;   // Set the volume to 50% (adjust as needed)
+            });
+          </script>
+          
+
+        <div id="wrap">
+            <div id="text">
+                <div id="code">
+                    <span class="say">Hello Sweetheart, </span><br>
+                    <span class="say">
+                        I love you and ik you still love me too. Things doesnt end with no fights or arguments
+                        in a day. My expectations with you are nothing more than your love. So why do you feel like
+                        you are not able to fulfill me expectations? I am sure that you absolutely love being loved by me.
+                        And you do deserve all the love and efforts you get. You look the best and happiest with my love, care, 
+                        efforts and princess treatment. You were genuinely happy in those 2 months.
+                        I want you to not push me away and deprive me of your love when all i wanted is your Love. 
+                    </span>
+                   
+                </div>
+
+
+            </div>
+            <div id="clock-box">
+                <span class="STYLE1"></span>
+                <font color="#33CC00">I Love you,</font>
+                <span class="STYLE1">And I know you love me too.</span>
+               
+            </div>
+            <canvas id="canvas" width="1100" height="680"></canvas>
+        </div>
+    </div>
+
+    <script>
+    </script>
+
+    <script>
+
+        window.onload = function () {
+            let icon = document.querySelector('.music-icon');
+            icon.classList.add('rotateImages');
+        }
+
+        function toggleMusic() {
+            let audio = document.querySelector('.song-audio-autoplay');
+            let icon = document.querySelector('.music-icon');
+            if (audio.paused) {
+                audio.play();
+                icon.classList.add('rotateImages');
+            } else {
+                audio.pause();
+                icon.classList.remove('rotateImages');
+            }
+        }
+
+        (function () {
+            var canvas = $('#canvas');
+
+            if (!canvas[0].getContext) {
+                $("#error").show();
+                return false;
+            }
+
+            var width = canvas.width();
+            var height = canvas.height();
+            canvas.attr("width", width);
+            canvas.attr("height", height);
+            var opts = {
+                seed: {
+                    x: width / 2 - 20,
+                    color: "rgb(190, 26, 37)",
+                    scale: 2
+                },
+                branch: [
+                    [535, 680, 570, 250, 500, 200, 30, 100, [
+                        [540, 500, 455, 417, 340, 400, 13, 100, [
+                            [450, 435, 434, 430, 394, 395, 2, 40]
+                        ]],
+                        [550, 445, 600, 356, 680, 345, 12, 100, [
+                            [578, 400, 648, 409, 661, 426, 3, 80]
+                        ]],
+                        [539, 281, 537, 248, 534, 217, 3, 40],
+                        [546, 397, 413, 247, 328, 244, 9, 80, [
+                            [427, 286, 383, 253, 371, 205, 2, 40],
+                            [498, 345, 435, 315, 395, 330, 4, 60]
+                        ]],
+                        [546, 357, 608, 252, 678, 221, 6, 100, [
+                            [590, 293, 646, 277, 648, 271, 2, 80]
+                        ]]
+                    ]]
+                ],
+                bloom: {
+                    num: 700,
+                    width: 1080,
+                    height: 650,
+                },
+                footer: {
+                    width: 1200,
+                    height: 5,
+                    speed: 10,
+                }
+            }
+
+            var tree = new Tree(canvas[0], width, height, opts);
+            var seed = tree.seed;
+            var foot = tree.footer;
+            var hold = 1;
+
+            canvas.click(function (e) {
+                var offset = canvas.offset(), x, y;
+                x = e.pageX - offset.left;
+                y = e.pageY - offset.top;
+                if (seed.hover(x, y)) {
+                    hold = 0;
+                    canvas.unbind("click");
+                    canvas.unbind("mousemove");
+                    canvas.removeClass('hand');
+                }
+            }).mousemove(function (e) {
+                var offset = canvas.offset(), x, y;
+                x = e.pageX - offset.left;
+                y = e.pageY - offset.top;
+                canvas.toggleClass('hand', seed.hover(x, y));
+            });
+
+            var seedAnimate = eval(Jscex.compile("async", function () {
+                seed.draw();
+                while (hold) {
+                    $await(Jscex.Async.sleep(10));
+                }
+                while (seed.canScale()) {
+                    seed.scale(0.95);
+                    $await(Jscex.Async.sleep(10));
+                }
+                while (seed.canMove()) {
+                    seed.move(0, 2);
+                    foot.draw();
+                    $await(Jscex.Async.sleep(10));
+                }
+            }));
+
+            var growAnimate = eval(Jscex.compile("async", function () {
+                do {
+                    tree.grow();
+                    $await(Jscex.Async.sleep(10));
+                } while (tree.canGrow());
+            }));
+
+            var flowAnimate = eval(Jscex.compile("async", function () {
+                do {
+                    tree.flower(2);
+                    $await(Jscex.Async.sleep(10));
+                } while (tree.canFlower());
+            }));
+
+            var moveAnimate = eval(Jscex.compile("async", function () {
+                tree.snapshot("p1", 240, 0, 610, 680);
+                while (tree.move("p1", 500, 0)) {
+                    foot.draw();
+                    $await(Jscex.Async.sleep(10));
+                }
+                foot.draw();
+                tree.snapshot("p2", 500, 0, 610, 680);
+
+                // There will be flickering if done this way, (＞﹏＜)
+                canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+                canvas.css("background", "#ffe");
+                $await(Jscex.Async.sleep(300));
+                canvas.css("background", "none");
+            }));
+
+            var jumpAnimate = eval(Jscex.compile("async", function () {
+                var ctx = tree.ctx;
+                while (true) {
+                    tree.ctx.clearRect(0, 0, width, height);
+                    tree.jump();
+                    foot.draw();
+                    $await(Jscex.Async.sleep(25));
+                }
+            }));
+
+            var textAnimate = eval(Jscex.compile("async", function () {
+                var together = new Date();
+                together.setFullYear(2024, 11, 31); 			// Date (Year, Month, Day)
+                together.setHours(0);						// Hours	
+                together.setMinutes(0);					// Minutes
+                together.setSeconds(0);					// Seconds
+                together.setMilliseconds(0);				// Milliseconds
+
+                $("#code").show().typewriter();
+                $("#clock-box").fadeIn(500);
+                while (true) {
+                    timeElapse(together);
+                    $await(Jscex.Async.sleep(1000));
+                }
+            }));
+
+            var runAsync = eval(Jscex.compile("async", function () {
+                $await(seedAnimate());
+                $await(growAnimate());
+                $await(flowAnimate());
+                $await(moveAnimate());
+
+                textAnimate().start();
+
+                $await(jumpAnimate());
+            }));
+
+            runAsync().start();
+        })();
+    </script>
+</body>
+
+</html>

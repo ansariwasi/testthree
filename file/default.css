@@ -1,0 +1,129 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffe;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #231F20;
+    overflow: auto;
+  }
+  
+  a {
+    color: #000;
+    font-size: 14px;
+  }
+  
+  #main {
+    width: 100%;
+  }
+  
+  #wrap {
+    position: relative;
+    margin: 0 auto;
+    /* width: 1100px;  Original Width -  Adjusted Responsively Below*/
+    max-width: 1100px; /*  Maximum width, but will shrink on smaller screens. Important! */
+    height: 680px; /* Fixed height, but might need adjustments based on content responsiveness */
+    margin-top: 10px;
+    width: 95%; /* Take up 95% of screen width */
+  }
+  
+  #text {
+    /* width: 272px;  Original Width - Adjusted Responsively Below */
+    width: 80%; /* Take up 80% of container's width */
+    max-width: 272px; /* Cap the width */
+    height: 560px;
+    /* left: 188px; Original - Changed to relative positioning */
+    left: 5%; /* Positioned 5% from the left */
+    top: 80px;
+    position: absolute;
+  }
+  
+  #code {
+    display: none;
+    font-size: 16px;
+  }
+  
+  #clock-box {
+    position: absolute;
+    left: 60px;
+    top: 550px;
+    font-size: 28px;
+    display: none;
+  }
+  
+  #clock-box a {
+    font-size: 28px;
+    text-decoration: none;
+  }
+  
+  #clock {
+    margin-left: 48px;
+  }
+  
+  #clock .digit {
+    font-size: 64px;
+  }
+  
+  #canvas {
+    margin: 0 auto;
+    /* width: 1100px; Original Width - Adjusted Responsively Below*/
+    width: 100%; /* Make canvas responsive */
+    max-width: 1100px; /* Respect the max width for bigger screens */
+    height: 680px;
+  }
+  
+  #error {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 60px;
+    display: none;
+  }
+  
+  .hand {
+    cursor: pointer;
+  }
+  
+  .say {
+    margin-left: 5px;
+  }
+  
+  .space {
+    margin-right: 150px;
+  }
+  
+  /* Media Queries for smaller screens - responsive font size */
+  @media (max-width: 768px) {
+    #wrap {
+      height: auto; /* Allow height to adjust based on content */
+    }
+  
+    #text {
+      position: relative; /* Remove absolute positioning for better flow */
+      left: auto; /* Reset left positioning */
+      top: auto; /* Reset top positioning */
+      margin: 20px auto; /* Center and add margin */
+    }
+  
+    #clock-box {
+      position: relative; /* Remove absolute positioning */
+      left: auto; /* Reset left positioning */
+      top: auto; /* Reset top positioning */
+      margin: 20px auto; /* Center and add margin */
+      text-align: center;
+    }
+  
+    .space {
+      margin-right: 50px; /* Reduce space on smaller screens */
+    }
+  
+    body {
+      font-size: 12px; /* Smaller font on mobile */
+    }
+  
+    a {
+      font-size: 12px;
+    }
+  }
+  
+  
+  /* Add further adjustments as needed.  Inspect the elements in the browser's developer tools (F12) on different screen sizes and add more media queries to fine-tune the layout and font sizes. */
